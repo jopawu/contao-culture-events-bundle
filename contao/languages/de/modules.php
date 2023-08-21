@@ -17,12 +17,12 @@ use Jopawu\ContaoCultureEventsBundle\Controller\FrontendModule\CultureEventsList
 /**
  * Backend modules
  */
-$GLOBALS['TL_LANG']['MOD']['culture_events_module'] = 'Culture Events';
-$GLOBALS['TL_LANG']['MOD']['culture_events_collection'] = ['Manage', 'Management of culture events.'];
+$GLOBALS['TL_LANG']['MOD']['culture_events_module'] = 'Kulturveranstaltungen';
+$GLOBALS['TL_LANG']['MOD']['culture_events_collection'] = ['Verwalten', 'Verwaltung der Kulturveranstaltungen.'];
 
 /**
  * Frontend modules
  */
-$GLOBALS['TL_LANG']['FMD']['culture_events_module'] = 'Culture Events';
-$GLOBALS['TL_LANG']['FMD'][CultureEventsListingController::TYPE] = ['Published Events Listing', 'Lists all published culture events.'];
+$GLOBALS['TL_LANG']['FMD']['culture_events_module'] = 'Kulturveranstaltungen';
+$GLOBALS['TL_LANG']['FMD'][CultureEventsListingController::TYPE] = ['Veröffentlichte Kulturveranstaltungen', 'Auflistung aller veröffentlichten Kulturveranstaltungen.'];
 

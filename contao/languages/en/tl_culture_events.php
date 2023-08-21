@@ -15,39 +15,41 @@ declare(strict_types=1);
 /**
  * Legends
  */
-$GLOBALS['TL_LANG']['tl_culture_events']['first_legend'] = "Basis Einstellungen";
-$GLOBALS['TL_LANG']['tl_culture_events']['second_legend'] = "Erweiterte Einstellungen";
+$GLOBALS['TL_LANG']['tl_culture_events']['scheduleLegend'] = "Schedule";
+$GLOBALS['TL_LANG']['tl_culture_events']['contentLegend'] = "Content";
+$GLOBALS['TL_LANG']['tl_culture_events']['presentationLegend'] = "Availability";
 
 /**
 * Global operations
 */
-$GLOBALS['TL_LANG']['tl_culture_events']['new'] = ["Neu", "Ein neues Element anlegen"];
+$GLOBALS['TL_LANG']['tl_culture_events']['new'] = ["New", "Create new Event"];
 
 /**
  * Operations
  */
-$GLOBALS['TL_LANG']['tl_culture_events']['edit'] = "Datensatz mit ID: %s bearbeiten";
-$GLOBALS['TL_LANG']['tl_culture_events']['copy'] = "Datensatz mit ID: %s kopieren";
-$GLOBALS['TL_LANG']['tl_culture_events']['delete'] = "Datensatz mit ID: %s löschen";
-$GLOBALS['TL_LANG']['tl_culture_events']['show'] = "Datensatz mit ID: %s ansehen";
+$GLOBALS['TL_LANG']['tl_culture_events']['edit'] = "Edit Event with ID: %s";
+$GLOBALS['TL_LANG']['tl_culture_events']['copy'] = "Copy Event with ID: %s";
+$GLOBALS['TL_LANG']['tl_culture_events']['delete'] = "Delete Event with ID: %s";
+$GLOBALS['TL_LANG']['tl_culture_events']['show'] = "Show Event with ID: %s";
 
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_culture_events']['title'] = ["Titel", "Geben Sie den Titel ein"];
-$GLOBALS['TL_LANG']['tl_culture_events']['selectField'] = ["Select Feld", "Wählen Sie aus."];
-$GLOBALS['TL_LANG']['tl_culture_events']['checkboxField'] = ["Chosen Feld", "Wählen Sie aus."];
-$GLOBALS['TL_LANG']['tl_culture_events']['multitextField'] = ["Multitext Feld", "Geben Sie die Werte ein"];
-$GLOBALS['TL_LANG']['tl_culture_events']['addSubpalette'] = ["Erweiterte Einstellungen aktivieren", "Hier können Sie die erweiterten Einstellungen aktivieren."];
-$GLOBALS['TL_LANG']['tl_culture_events']['textareaField'] = ["Textarea", "Geben Sie einen Text ein"];
+$GLOBALS['TL_LANG']['tl_culture_events']['scheduleSubpalette'] = ["Schedule Mode", "Choose for a suitable schedule modes."];
+$GLOBALS['TL_LANG']['tl_culture_events']['startDate'] = ["Start Date", "The start date of the event."];
+$GLOBALS['TL_LANG']['tl_culture_events']['startTime'] = ["Start Time", "The start time of the event."];
+$GLOBALS['TL_LANG']['tl_culture_events']['endDate'] = ["End Date", "The end date of the event."];
+$GLOBALS['TL_LANG']['tl_culture_events']['endTime'] = ["End Time", "The end time of the event."];
+$GLOBALS['TL_LANG']['tl_culture_events']['title'] = ["Title", "The events title."];
+$GLOBALS['TL_LANG']['tl_culture_events']['subtitle'] = ["Subtitle", "An optional subtitle for the event."];
+$GLOBALS['TL_LANG']['tl_culture_events']['description'] = ["Description", "The events description."];
+$GLOBALS['TL_LANG']['tl_culture_events']['summary'] = ["Summary", "A short summary for the description of the event."];
+$GLOBALS['TL_LANG']['tl_culture_events']['publishingDate'] = ["Publishing Date", "The date for publishing the event."];
+$GLOBALS['TL_LANG']['tl_culture_events']['archiveDate'] = ["Archive Date", "The date for archiving the event."];
 
 /**
  * References
  */
-$GLOBALS['TL_LANG']['tl_culture_events']['firstoption'] = "Erste Option";
-$GLOBALS['TL_LANG']['tl_culture_events']['secondoption'] = "Zweite Option";
-
-/**
- * Buttons
- */
-$GLOBALS['TL_LANG']['tl_culture_events']['customButton'] = "Custom Routine starten";
+$GLOBALS['TL_LANG']['tl_culture_events']['singleDay'] = "Single Day";
+$GLOBALS['TL_LANG']['tl_culture_events']['multiDay'] = "Multiple Days";
+$GLOBALS['TL_LANG']['tl_culture_events']['dateTimes'] = "Start/End Date and Time";

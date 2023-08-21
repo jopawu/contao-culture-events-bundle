@@ -17,8 +17,8 @@ use Jopawu\ContaoCultureEventsBundle\Controller\ContentElement\CultureEventPrese
 /**
  * Content element
  */
-$GLOBALS['TL_LANG']['CTE']['culture_events_elements'] = 'Culture Events';
-$GLOBALS['TL_LANG']['CTE'][CultureEventPresentationController::TYPE] = ['Single Event Presentation', 'Presents a single culture event.'];
+$GLOBALS['TL_LANG']['CTE']['culture_events_elements'] = 'Kulturveranstaltungen';
+$GLOBALS['TL_LANG']['CTE'][CultureEventPresentationController::TYPE] = ['Präsentation einer Veranstaltung', 'Präsentiert eine Kulturveranstaltung.'];
 
 /**
  * Miscellaneous
