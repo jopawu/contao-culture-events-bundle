@@ -31,10 +31,10 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[AsFrontendModule(category: 'culture_events_module', template: 'mod_culture_events_listing')]
-class CultureEventsListingController extends AbstractFrontendModuleController
+#[AsFrontendModule(category: 'culture_events_module', template: 'mod_culture_events_archive')]
+class CultureEventsArchiveController extends AbstractFrontendModuleController
 {
-    public const TYPE = 'culture_events_listing';
+    public const TYPE = 'culture_events_archive';
 
     protected ?PageModel $page;
 
@@ -74,7 +74,7 @@ class CultureEventsListingController extends AbstractFrontendModuleController
 
     protected function getResponse(Template $template, ModuleModel $model, Request $request): Response
     {
-        $userFirstname = 'DUDEi';
+        $userFirstname = 'DUDE';
         $user = $this->container->get('security.helper')->getUser();
 
         // Get the logged in frontend user... if there is one
@@ -106,11 +106,7 @@ class CultureEventsListingController extends AbstractFrontendModuleController
             $arrGuests[] = $row['firstname'];
         }
 
-        $template->helloTitle = sprintf(
-            'Hi %s, and welcome to the "Hello World Module". Today is %s.',
-            $userFirstname,
-            $strWeekday,
-        );
+        $template->helloArchive = 'blubb (!)';
 
         $template->helloText = '';
 

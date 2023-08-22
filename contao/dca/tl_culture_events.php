@@ -54,6 +54,7 @@ $GLOBALS['TL_DCA']['tl_culture_events']['fields'] = [
         ],
 
         'eval' => [
+            'submitOnChange' => true,
             'mandatory' => true,
             'includeBlankOption' => true,
             'tl_class' => 'w50'
@@ -63,7 +64,7 @@ $GLOBALS['TL_DCA']['tl_culture_events']['fields'] = [
 
     'startDate' => [
 
-        'sql'       => "varchar(255) NOT NULL default ''",
+        'sql'       => "int(10) unsigned NULL",
         'inputType' => 'text',
         'search'    => true,
         'filter'    => true,
@@ -82,7 +83,7 @@ $GLOBALS['TL_DCA']['tl_culture_events']['fields'] = [
 
     'startTime' => [
 
-        'sql'       => "varchar(255) NOT NULL default ''",
+        'sql'       => "int(10) NULL",
         'inputType' => 'text',
 
         'eval'      => [
@@ -96,7 +97,7 @@ $GLOBALS['TL_DCA']['tl_culture_events']['fields'] = [
 
     'endDate' => [
 
-        'sql'       => "varchar(255) NOT NULL default ''",
+        'sql'       => "int(10) unsigned NULL",
         'inputType' => 'text',
         'search'    => true,
         'filter'    => true,
@@ -115,7 +116,7 @@ $GLOBALS['TL_DCA']['tl_culture_events']['fields'] = [
 
     'endTime' => [
 
-        'sql'       => "varchar(255) NOT NULL default ''",
+        'sql'       => "int(10) NULL",
         'inputType' => 'text',
 
         'eval'      => [
@@ -191,7 +192,7 @@ $GLOBALS['TL_DCA']['tl_culture_events']['fields'] = [
 
     'publishingDate' => [
 
-        'sql'       => "varchar(255) NOT NULL default ''",
+        'sql'       => "int(10) unsigned NULL",
         'inputType' => 'text',
         'search'    => true,
         'filter'    => true,
@@ -210,7 +211,7 @@ $GLOBALS['TL_DCA']['tl_culture_events']['fields'] = [
 
     'archiveDate' => [
 
-        'sql'       => "varchar(255) NOT NULL default ''",
+        'sql'       => "int(10) unsigned NULL",
         'inputType' => 'text',
         'search'    => true,
         'filter'    => true,

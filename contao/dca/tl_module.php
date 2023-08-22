@@ -13,8 +13,10 @@ declare(strict_types=1);
  */
 
 use Jopawu\ContaoCultureEventsBundle\Controller\FrontendModule\CultureEventsListingController;
+use Jopawu\ContaoCultureEventsBundle\Controller\FrontendModule\CultureEventsArchiveController;
 
 /**
  * Frontend modules
  */
 $GLOBALS['TL_DCA']['tl_module']['palettes'][CultureEventsListingController::TYPE] = '{title_legend},name,headline,type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes'][CultureEventsArchiveController::TYPE] = '{title_legend},name,headline,type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';

@@ -35,7 +35,7 @@ $GLOBALS['TL_LANG']['tl_culture_events']['show'] = "Veranstaltung mit ID: %s ans
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_culture_events']['scheduleSubpalette'] = ["Termin-Modus", "Auswahl eines geeigneten Termin-Modus."];
+$GLOBALS['TL_LANG']['tl_culture_events']['scheduleMode'] = ["Termin-Modus", "Auswahl eines geeigneten Termin-Modus."];
 $GLOBALS['TL_LANG']['tl_culture_events']['startDate'] = ["Start Datum", "Das Startdatum der Veranstaltung."];
 $GLOBALS['TL_LANG']['tl_culture_events']['startTime'] = ["Start Zeit", "Die Startzeit der Veranstaltung."];
 $GLOBALS['TL_LANG']['tl_culture_events']['endDate'] = ["End Datum", "Das Enddatum der Veranstaltung."];

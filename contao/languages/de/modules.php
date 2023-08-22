@@ -13,6 +13,7 @@ declare(strict_types=1);
  */
 
 use Jopawu\ContaoCultureEventsBundle\Controller\FrontendModule\CultureEventsListingController;
+use Jopawu\ContaoCultureEventsBundle\Controller\FrontendModule\CultureEventsArchiveController;
 
 /**
  * Backend modules
@@ -25,4 +26,5 @@ $GLOBALS['TL_LANG']['MOD']['culture_events_collection'] = ['Verwalten', 'Verwalt
  */
 $GLOBALS['TL_LANG']['FMD']['culture_events_module'] = 'Kulturveranstaltungen';
 $GLOBALS['TL_LANG']['FMD'][CultureEventsListingController::TYPE] = ['Veröffentlichte Kulturveranstaltungen', 'Auflistung aller veröffentlichten Kulturveranstaltungen.'];
+$GLOBALS['TL_LANG']['FMD'][CultureEventsArchiveController::TYPE] = ['Archivierte Kulturveranstaltungen', 'Auflistung aller archivierten Kulturveranstaltungen.'];
 

@@ -35,7 +35,7 @@ $GLOBALS['TL_LANG']['tl_culture_events']['show'] = "Show Event with ID: %s";
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_culture_events']['scheduleSubpalette'] = ["Schedule Mode", "Choose for a suitable schedule modes."];
+$GLOBALS['TL_LANG']['tl_culture_events']['scheduleMode'] = ["Schedule Mode", "Choose for a suitable schedule modes."];
 $GLOBALS['TL_LANG']['tl_culture_events']['startDate'] = ["Start Date", "The start date of the event."];
 $GLOBALS['TL_LANG']['tl_culture_events']['startTime'] = ["Start Time", "The start time of the event."];
 $GLOBALS['TL_LANG']['tl_culture_events']['endDate'] = ["End Date", "The end date of the event."];
