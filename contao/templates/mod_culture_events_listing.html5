@@ -2,7 +2,36 @@
 
 <?php $this->block('content'); ?>
 
-    <h3><?= $this->helloTitle ?></h3>
-    <p><?= $this->helloText ?></p>
+    <h3><?= $this->listingTitle ?></h3>
+    <div>
+        <?php $first = true; foreach($this->listingItems as $item) { ?>
+            <?php if(!$first) { ?>
+                <div>
+                    <div class="cultureEventSchedule"></div>
+                    <div class="cultureEventContent">
+                        <hr class="cultureEventSeparator" />
+                    </div>
+                </div>
+            <?php } ?>
+            <div>
+                <div class="cultureEventSchedule">
+                    <div class="cultureEventStartWeekday"><?= $item->startWeekday ?></div>
+                    <div class="cultureEventStartDate"><?= $item->startWeekday ?></div>
+                    <div class="cultureEventStartTime"><?= $item->startWeekday ?></div>
+                    <?php if($item->endSeparator) { ?>
+                        <div class="cultureEventEndSeparator"><?= $item->endSeparator ?></div>
+                        <div class="cultureEventEndTime"><?= $item->endTime ?></div>
+                        <div class="cultureEventEndDate"><?= $item->endDate ?></div>
+                        <div class="cultureEventEndWeekday"><?= $item->endWeekday ?></div>
+                    <?php } ?>
+                </div>
+                <div class="cultureEventContent">
+                    <h4 class="cultureEventTitle"><?= $item->title ?></h4>
+                    <div class="cultureEventSubtitle"><?= $item->subtitle ?></div>
+                    <div class="cultureEventDescription"><?= $item->description ?></div>
+                </div>
+            </div>
+        <?php $first = false; } ?>
+    </div>
 
 <?php $this->endblock(); ?>
