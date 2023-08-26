@@ -23,3 +23,8 @@ $GLOBALS['BE_MOD']['culture_events_module']['culture_events_collection'] = array
  * Models
  */
 $GLOBALS['TL_MODELS']['tl_culture_events'] = CultureEventsModel::class;
+
+/**
+ * CSS Files
+ */
+$GLOBALS['TL_CSS'][] = 'bundles/jopawucontaocultureevents/css/styles.css';

@@ -14,9 +14,23 @@ declare(strict_types=1);
 
 namespace Jopawu\ContaoCultureEventsBundle\Model;
 
+use Contao\Date;
 use Contao\Model;
+use Contao\Model\Collection;
 
 class CultureEventsModel extends Model
 {
     protected static $strTable = 'tl_culture_events';
+
+    /**
+     * @return Collection
+     */
+    public static function findPublished(): Collection
+    {
+        $nowTS = time();
+
+        return self::findBy(
+            ['publishingDate <= ?', 'archiveDate >= ?'], [$nowTS, $nowTS]
+        );
+    }
 }

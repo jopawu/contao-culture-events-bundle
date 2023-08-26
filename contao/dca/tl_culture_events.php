@@ -190,6 +190,18 @@ $GLOBALS['TL_DCA']['tl_culture_events']['fields'] = [
 
     ],
 
+    'isCultureTrip' => [
+
+        'sql' => [ 'type' => 'boolean', 'default' => false ],
+        'inputType' => 'checkbox',
+        'filter'    => true,
+        'reference' => &$GLOBALS['TL_LANG']['tl_culture_events'],
+
+        'eval' => [
+            'tl_class' => 'w100'
+        ]
+    ],
+
     'publishingDate' => [
 
         'sql'       => "int(10) unsigned NULL",
@@ -235,7 +247,7 @@ $GLOBALS['TL_DCA']['tl_culture_events']['fields'] = [
 $GLOBALS['TL_DCA']['tl_culture_events']['palettes'] = [
 
     '__selector__' => ['scheduleMode'],
-    'default'      => '{scheduleLegend},scheduleMode;{contentLegend},title,subtitle,description,summary;{presentationLegend},publishingDate,archiveDate'
+    'default'      => '{scheduleLegend},scheduleMode;{contentLegend},title,subtitle,description,summary;{presentationLegend},isCultureTrip,publishingDate,archiveDate'
 
 ];
 

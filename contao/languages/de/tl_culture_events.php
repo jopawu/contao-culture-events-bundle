@@ -44,6 +44,7 @@ $GLOBALS['TL_LANG']['tl_culture_events']['title'] = ["Titel", "Der Titel der Ver
 $GLOBALS['TL_LANG']['tl_culture_events']['subtitle'] = ["Titelzusatz", "Ein optionaler Zusatz zum Titel der Veranstaltung."];
 $GLOBALS['TL_LANG']['tl_culture_events']['description'] = ["Beschreibung", "Die Beschreibung zur Veranstaltung."];
 $GLOBALS['TL_LANG']['tl_culture_events']['summary'] = ["Zusammenfassung", "Eine kurze Zusammenfassung der Veranstaltung."];
+$GLOBALS['TL_LANG']['tl_culture_events']['isCultureTrip'] = ["Kulturreise", "Bei der Veranstaltung handelt es sich um eine Reise."];
 $GLOBALS['TL_LANG']['tl_culture_events']['publishingDate'] = ["Veröffentlichungsdatum", "Datum der Veröffentlichung für die Veranstaltung."];
 $GLOBALS['TL_LANG']['tl_culture_events']['archiveDate'] = ["Archivierungsdatum", "Datum der Archivierung für die Veranstaltung."];
 

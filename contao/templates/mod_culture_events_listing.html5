@@ -6,18 +6,15 @@
     <div>
         <?php $first = true; foreach($this->listingItems as $item) { ?>
             <?php if(!$first) { ?>
-                <div>
-                    <div class="cultureEventSchedule"></div>
-                    <div class="cultureEventContent">
-                        <hr class="cultureEventSeparator" />
-                    </div>
+                <div class="cultureEventContainer">
+                    <div class="cultureEventSeparator"><hr /></div>
                 </div>
             <?php } ?>
-            <div>
+            <div class="cultureEventContainer">
                 <div class="cultureEventSchedule">
                     <div class="cultureEventStartWeekday"><?= $item->startWeekday ?></div>
-                    <div class="cultureEventStartDate"><?= $item->startWeekday ?></div>
-                    <div class="cultureEventStartTime"><?= $item->startWeekday ?></div>
+                    <div class="cultureEventStartDate"><?= $item->startDate ?></div>
+                    <div class="cultureEventStartTime"><?= $item->startTime ?></div>
                     <?php if($item->endSeparator) { ?>
                         <div class="cultureEventEndSeparator"><?= $item->endSeparator ?></div>
                         <div class="cultureEventEndTime"><?= $item->endTime ?></div>

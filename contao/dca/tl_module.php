@@ -19,4 +19,5 @@ use Jopawu\ContaoCultureEventsBundle\Controller\FrontendModule\CultureEventsArch
  * Frontend modules
  */
 $GLOBALS['TL_DCA']['tl_module']['palettes'][CultureEventsListingController::TYPE] = '{title_legend},name,headline,type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes'][CultureEventsTripsController::TYPE] = '{title_legend},name,headline,type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
 $GLOBALS['TL_DCA']['tl_module']['palettes'][CultureEventsArchiveController::TYPE] = '{title_legend},name,headline,type;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';

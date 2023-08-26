@@ -1,21 +1,7 @@
 <?php
 
-declare(strict_types=1);
-
-/*
- * This file is part of Contao Culture Events.
- *
- * (c) Björn Heyser 2023 <bh@bjoernheyser.de>
- * @license GPL-3.0-or-later
- * For the full copyright and license information,
- * please view the LICENSE file that was distributed with this source code.
- * @link https://github.com/jopawu/contao-culture-events-bundle
- */
-
 namespace Jopawu\ContaoCultureEventsBundle\Controller\FrontendModule;
 
-use Contao\CoreBundle\Controller\FrontendModule\AbstractFrontendModuleController;
-use Contao\CoreBundle\DependencyInjection\Attribute\AsFrontendModule;
 use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\CoreBundle\Routing\ScopeMatcher;
 use Contao\Date;
@@ -25,17 +11,18 @@ use Contao\PageModel;
 use Contao\Template;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Result;
-use Jopawu\ContaoCultureEventsBundle\Model\CultureEventsModel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[AsFrontendModule(category: 'culture_events_module', template: 'mod_culture_events_listing')]
-class CultureEventsListingController extends AbstractFrontendModuleController
+/**
+ * @author      Björn Heyser <info@bjoernheyser.de>
+ */
+class CultureEventsTripsController
 {
-    public const TYPE = 'culture_events_listing';
+    public const TYPE = 'culture_events_trips';
 
     protected ?PageModel $page;
 
@@ -73,44 +60,9 @@ class CultureEventsListingController extends AbstractFrontendModuleController
         return $services;
     }
 
-    /**
-     * @param Template $template
-     * @param ModuleModel $model
-     * @param Request $request
-     * @return Response
-     */
     protected function getResponse(Template $template, ModuleModel $model, Request $request): Response
     {
-        return $this->buildEventListingResponse($template, $model, $request);
-    }
-
-    /**
-     * @param Template $template
-     * @param ModuleModel $model
-     * @param Request $request
-     * @return Response
-     */
-    protected function buildEventListingResponse(Template $template, ModuleModel $model, Request $request): Response
-    {
-        /* @var TranslatorInterface $translator */
-        $translator = $this->container->get('translator');
-        /** @var Date $dateAdapter */
-        $dateAdapter = $this->container->get('contao.framework')->getAdapter(Date::class);
-        $intWeekday = $dateAdapter->parse('w');
-        $strWeekday = $translator->trans('DAYS.'.$intWeekday, [], 'contao_default');
-
-        $events = CultureEventsModel::findPublished();
-        $template->listingItems = $events;
-
-        return $template->getResponse();
-
-    }
-
-    // -----------------------------------------------------------------------------------------------------------------
-
-    protected function getResponseExample(Template $template, ModuleModel $model, Request $request): Response
-    {
-        $userFirstname = 'DUDEi';
+        $userFirstname = 'DUDE';
         $user = $this->container->get('security.helper')->getUser();
 
         // Get the logged in frontend user... if there is one
@@ -142,11 +94,7 @@ class CultureEventsListingController extends AbstractFrontendModuleController
             $arrGuests[] = $row['firstname'];
         }
 
-        $template->helloTitle = sprintf(
-            'Hi %s, and welcome to the "Hello World Module". Today is %s.',
-            $userFirstname,
-            $strWeekday,
-        );
+        $template->helloArchive = 'blubb (!)';
 
         $template->helloText = '';
 

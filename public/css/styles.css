@@ -1,15 +1,25 @@
-/** Still empty stylesheet **/
+/* BEGIN CSS contao culture events bundle */
 
-.cultureEventStartDate, .cultureEventEndDate {
-    font-weight: bold;
-    color: rgb(205,21,43);
+.cultureEventContainer {
+    clear: both;
+}
+
+.cultureEventSchedule {
+    width: 100px;
+    float: left;
 }
 
 .cultureEventContent {
+    margin-left: 105px;
+    padding-left: 25px;
     border-left: solid #000000 3px;
 }
 
 .cultureEventSeparator {
+    margin: 40px 0 40px 105px;
+}
+
+.cultureEventSeparator hr {
     border: 0;
     height: 3px;
     background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
@@ -18,8 +28,14 @@
     background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
 }
 
+.cultureEventStartDate, .cultureEventEndDate {
+    font-weight: bold;
+    color: rgb(205,21,43);
+}
+
 .cultureEventTitle {
     font-size: 23px;
+    margin-bottom: 5px;
 }
 
 .cultureEventSubtitle {
@@ -28,5 +44,8 @@
 }
 
 .cultureEventDescription {
-
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
+
+/* END CSS contao culture events bundle */
