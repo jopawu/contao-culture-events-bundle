@@ -13,6 +13,7 @@ declare(strict_types=1);
  */
 
 use Jopawu\ContaoCultureEventsBundle\Controller\FrontendModule\CultureEventsListingController;
+use Jopawu\ContaoCultureEventsBundle\Controller\FrontendModule\CultureEventsTripsController;
 use Jopawu\ContaoCultureEventsBundle\Controller\FrontendModule\CultureEventsArchiveController;
 
 /**
