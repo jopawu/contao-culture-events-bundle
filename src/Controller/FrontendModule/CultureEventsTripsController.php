@@ -2,6 +2,8 @@
 
 namespace Jopawu\ContaoCultureEventsBundle\Controller\FrontendModule;
 
+use Contao\CoreBundle\Controller\FrontendModule\AbstractFrontendModuleController;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsFrontendModule;
 use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\CoreBundle\Routing\ScopeMatcher;
 use Contao\Date;
@@ -17,10 +19,9 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-/**
- * @author      Björn Heyser <info@bjoernheyser.de>
- */
-class CultureEventsTripsController
+
+#[AsFrontendModule(category: 'culture_events_module', template: 'mod_culture_events_trips')]
+class CultureEventsTripsController extends AbstractFrontendModuleController
 {
     public const TYPE = 'culture_events_trips';
 
