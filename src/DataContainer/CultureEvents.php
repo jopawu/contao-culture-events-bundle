@@ -38,7 +38,7 @@ class CultureEvents
         $systemAdapter->loadLanguageFile('tl_culture_events');
 
         if ('edit' === $inputAdapter->get('act')) {
-            $arrButtons['customButton'] = '<button type="submit" name="customButton" id="customButton" class="tl_submit customButton" accesskey="x">'.$GLOBALS['TL_LANG']['tl_culture_events']['customButton'].'</button>';
+            //$arrButtons['customButton'] = '<button type="submit" name="customButton" id="customButton" class="tl_submit customButton" accesskey="x">'.$GLOBALS['TL_LANG']['tl_culture_events']['customButton'].'</button>';
         }
 
         return $arrButtons;

@@ -2,8 +2,8 @@
 
 <?php $this->block('content'); ?>
 
-    <h3><?= $this->listingTitle ?></h3>
-    <div>
+    <h2><?= $this->listingTitle ?></h2>
+    <div class="cultureEventsListingContainer">
         <?php $first = true; foreach($this->listingItems as $item) { ?>
             <?php if(!$first) { ?>
                 <div class="cultureEventContainer">
@@ -23,7 +23,7 @@
                     <?php } ?>
                 </div>
                 <div class="cultureEventContent">
-                    <h4 class="cultureEventTitle"><?= $item->title ?></h4>
+                    <h3 class="cultureEventTitle"><?= $item->title ?></h3>
                     <div class="cultureEventSubtitle"><?= $item->subtitle ?></div>
                     <div class="cultureEventDescription"><?= $item->description ?></div>
                 </div>

@@ -2,7 +2,27 @@
 
 <?php $this->block('content'); ?>
 
-    <h3><?= $this->helloArchive ?></h3>
-    <p><?= $this->helloText ?></p>
+    <h2><?= $this->archiveTitle ?></h2>
+    <div class="cultureEventsArchiveContainer">
+        <?php $first = true; foreach($this->archiveItems as $year => $items) { ?>
+            <?php if(!$first) { ?>
+                <div class="cultureArchiveContainer">
+                    <div class="cultureArchiveSeparator"><hr /></div>
+                </div>
+            <?php } ?>
+            <div class="cultureArchiveContainer">
+                <div class="cultureArchiveYear">
+                    <?= $year ?>
+                </div>
+                <div class="cultureArchiveContent">
+                    <ul class="cultureArchiveList">
+                    <?php foreach($items as $item) { ?>
+                        <li class="cultureEventSumary"><?= $item->summary ?></li>
+                    <?php } ?>
+                    </ul>
+                </div>
+            </div>
+        <?php $first = false; } ?>
+    </div>
 
 <?php $this->endblock(); ?>

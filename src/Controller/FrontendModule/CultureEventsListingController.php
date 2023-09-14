@@ -20,12 +20,17 @@ use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\CoreBundle\Routing\ScopeMatcher;
 use Contao\Date;
 use Contao\FrontendUser;
+use Contao\Model\Collection;
 use Contao\ModuleModel;
 use Contao\PageModel;
+use Contao\System;
 use Contao\Template;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Result;
+use Jopawu\ContaoCultureEventsBundle\Parameter\YearMonthParameterDetermination;
+use Jopawu\ContaoCultureEventsBundle\Parameter\YearMonthParameterString;
 use Jopawu\ContaoCultureEventsBundle\Model\CultureEventsModel;
+use Jopawu\ContaoCultureEventsBundle\Translation\Translator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -37,21 +42,42 @@ class CultureEventsListingController extends AbstractFrontendModuleController
 {
     public const TYPE = 'culture_events_listing';
 
+    /**
+     * @var PageModel|null
+     */
     protected ?PageModel $page;
 
     /**
-     * This method extends the parent __invoke method,
-     * its usage is usually not necessary.
+     * @var array
+     */
+    protected $publishingMonths = [];
+
+    /**
+     * @var string|null
+     */
+    protected $monthParameter = null;
+
+    /**
+     * @param Request $request
+     * @param ModuleModel $model
+     * @param string $section
+     * @param array|null $classes
+     * @param PageModel|null $page
+     * @return Response
      */
     public function __invoke(Request $request, ModuleModel $model, string $section, array $classes = null, PageModel $page = null): Response
     {
-        // Get the page model
         $this->page = $page;
 
         $scopeMatcher = $this->container->get('contao.routing.scope_matcher');
 
-        if ($this->page instanceof PageModel && $scopeMatcher->isFrontendRequest($request)) {
+        if ($this->page instanceof PageModel && $scopeMatcher->isFrontendRequest($request))
+        {
             $this->page->loadDetails();
+
+            $this->publishingMonths = CultureEventsModel::findPublishingMonths();
+            $this->monthParameter = YearMonthParameterDetermination::getParameter($this->publishingMonths);
+
         }
 
         return parent::__invoke($request, $model, $section, $classes);
@@ -92,18 +118,58 @@ class CultureEventsListingController extends AbstractFrontendModuleController
      */
     protected function buildEventListingResponse(Template $template, ModuleModel $model, Request $request): Response
     {
-        /* @var TranslatorInterface $translator */
-        $translator = $this->container->get('translator');
-        /** @var Date $dateAdapter */
-        $dateAdapter = $this->container->get('contao.framework')->getAdapter(Date::class);
-        $intWeekday = $dateAdapter->parse('w');
-        $strWeekday = $translator->trans('DAYS.'.$intWeekday, [], 'contao_default');
+        /* @var Translator $translator */
+        $translator = System::getContainer()->get('translator');
 
-        $events = CultureEventsModel::findPublished();
-        $template->listingItems = $events;
+        /* @var Translator $translator */
+        $mylng = Translator::getInstance();
+
+        [$year, $month] = YearMonthParameterString::split($this->monthParameter);
+        $titleMonth = $translator->trans('MONTHS.'.(int)($month-1), [], 'contao_default');
+        $template->listingTitle = $mylng->get('cultureEventsListingHeader', [$titleMonth, $year]);
+
+        $events = CultureEventsModel::findYearMonthPublished((int)$year, (int)$month);
+        $items = [];
+
+        foreach($events as $event)
+        {
+            $event->startWeekday = $translator->trans(
+                'DAYS.'.date('w', $event->startDate),
+                [],
+                'contao_default'
+            );
+
+            $event->startDate = date('d.m.Y', $event->startDate);
+
+            if( $event->startTime )
+            {
+                $event->startTime = date('H:i', $event->startTime);
+            }
+
+            if( $event->endDate )
+            {
+                $event->endWeekday = $translator->trans(
+                    'DAYS.'.date('w', $event->endDate),
+                    [],
+                    'contao_default'
+                );
+
+                $event->endDate = date('d.m.Y', $event->endDate);
+
+                $event->endSeparator = $mylng->get('cultureEventsStartEndSeparator');
+            }
+
+            if( $event->endTime )
+            {
+                $event->endTime = date('H:i', $event->endTime);
+            }
+
+            $items[] = $event;
+        }
+
+        $template->listingItems = $items;
 
         return $template->getResponse();
-
     }
 
     // -----------------------------------------------------------------------------------------------------------------

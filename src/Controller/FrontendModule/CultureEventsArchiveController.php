@@ -22,9 +22,13 @@ use Contao\Date;
 use Contao\FrontendUser;
 use Contao\ModuleModel;
 use Contao\PageModel;
+use Contao\System;
 use Contao\Template;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Result;
+use Jopawu\ContaoCultureEventsBundle\Model\CultureEventsModel;
+use Jopawu\ContaoCultureEventsBundle\Parameter\YearMonthParameterString;
+use Jopawu\ContaoCultureEventsBundle\Translation\Translator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -72,48 +76,79 @@ class CultureEventsArchiveController extends AbstractFrontendModuleController
         return $services;
     }
 
+    /**
+     * @param Template $template
+     * @param ModuleModel $model
+     * @param Request $request
+     * @return Response
+     */
     protected function getResponse(Template $template, ModuleModel $model, Request $request): Response
     {
-        $userFirstname = 'DUDE';
-        $user = $this->container->get('security.helper')->getUser();
+        return $this->buildEventArchiveResponse($template, $model, $request);
+    }
 
-        // Get the logged in frontend user... if there is one
-        if ($user instanceof FrontendUser) {
-            $userFirstname = $user->firstname;
+    /**
+     * @param Template $template
+     * @param ModuleModel $model
+     * @param Request $request
+     * @return Response
+     */
+    protected function buildEventArchiveResponse(Template $template, ModuleModel $model, Request $request): Response
+    {
+        /* @var Translator $translator */
+        $mylng = Translator::getInstance();
+
+        $template->archiveTitle = $this->getPageModel()->title;
+
+        $events = CultureEventsModel::findArchived();
+        $years = [];
+
+
+        foreach($events as $event)
+        {
+            $year = date('Y', $event->startDate);
+
+            if( !isset($years[$year]) )
+            {
+                $years[$year] = [];
+            }
+
+            $years[$year][] = $event;
         }
 
-        /** @var Session $session */
-        $session = $request->getSession();
-        $bag = $session->getBag('contao_frontend');
-        $bag->set('foo', 'bar');
-
-        /** @var Date $dateAdapter */
-        $dateAdapter = $this->container->get('contao.framework')->getAdapter(Date::class);
-
-        $intWeekday = $dateAdapter->parse('w');
-        $translator = $this->container->get('translator');
-        $strWeekday = $translator->trans('DAYS.'.$intWeekday, [], 'contao_default');
-
-        $arrGuests = [];
-
-        // Get the database connection
-        $db = $this->container->get('database_connection');
-
-        /** @var Result $stmt */
-        $stmt = $db->executeQuery('SELECT * FROM tl_member WHERE gender = ? ORDER BY lastname', ['female']);
-
-        while (false !== ($row = $stmt->fetchAssociative())) {
-            $arrGuests[] = $row['firstname'];
+        foreach($years as $year => $events)
+        {
+            usort($events, [self::class, 'eventSortCallBack']);
+            $years[$year] = $events; // !!!
         }
 
-        $template->helloArchive = 'blubb (!)';
+        krsort($years);
 
-        $template->helloText = '';
-
-        if (!empty($arrGuests)) {
-            $template->helloText = 'Our guests today are: '.implode(', ', $arrGuests);
-        }
+        $template->archiveItems = $years;
 
         return $template->getResponse();
+    }
+
+    /**
+     * @param CultureEventsModel $eventA
+     * @param CultureEventsModel $eventB
+     * @return int
+     */
+    public static function eventSortCallBack(CultureEventsModel $eventA, CultureEventsModel $eventB) : int
+    {
+        $startA = $eventA->startTime ? $eventA->startDate + $eventA->startTime : $eventA->startDate;
+        $startB = $eventB->startTime ? $eventB->startDate + $eventB->startTime : $eventB->startDate;
+
+        if($startA > $startB)
+        {
+            return -1;
+        }
+
+        if($startA < $startB)
+        {
+            return 1;
+        }
+
+        return 0;
     }
 }

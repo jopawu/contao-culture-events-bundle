@@ -50,6 +50,7 @@ $GLOBALS['TL_DCA']['tl_culture_events']['fields'] = [
         'options' => [
             'singleDay',
             'multiDay',
+            'singleTime',
             'dateTimes'
         ],
 
@@ -198,8 +199,23 @@ $GLOBALS['TL_DCA']['tl_culture_events']['fields'] = [
         'reference' => &$GLOBALS['TL_LANG']['tl_culture_events'],
 
         'eval' => [
+            'submitOnChange' => true,
             'tl_class' => 'w100'
         ]
+    ],
+
+    'tripDescription' => [
+
+        'sql'       => 'text NULL',
+        'inputType' => 'textarea',
+        'search'    => true,
+
+        'eval'      => [
+            'mandatory' => true,
+            'rte' => 'tinyMCE',
+            'tl_class' => 'clr'
+        ]
+
     ],
 
     'publishingDate' => [
@@ -246,7 +262,7 @@ $GLOBALS['TL_DCA']['tl_culture_events']['fields'] = [
 
 $GLOBALS['TL_DCA']['tl_culture_events']['palettes'] = [
 
-    '__selector__' => ['scheduleMode'],
+    '__selector__' => ['scheduleMode', 'isCultureTrip'],
     'default'      => '{scheduleLegend},scheduleMode;{contentLegend},title,subtitle,description,summary;{presentationLegend},isCultureTrip,publishingDate,archiveDate'
 
 ];
@@ -255,7 +271,10 @@ $GLOBALS['TL_DCA']['tl_culture_events']['subpalettes'] = [
 
     'scheduleMode_singleDay' => 'startDate',
     'scheduleMode_multiDay' => 'startDate,endDate',
-    'scheduleMode_dateTimes' => 'startDate,startTime,endDate,endTime'
+    'scheduleMode_singleTime' => 'startDate,startTime',
+    'scheduleMode_dateTimes' => 'startDate,startTime,endDate,endTime',
+
+    'isCultureTrip' => 'tripDescription'
 
 ];
 

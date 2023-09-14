@@ -2,7 +2,20 @@
 
 <?php $this->block('content'); ?>
 
-    <h3><?= $this->helloArchive ?></h3>
-    <p><?= $this->helloText ?></p>
+    <!-- <h2><?= $this->listingTitle ?></h2> -->
+    <div class="cultureEventsTripsContainer">
+        <?php $first = true; foreach($this->listingItems as $item) { ?>
+            <?php if(!$first) { ?>
+                <div class="cultureEventContainer">
+                    <div class="cultureEventSeparator"><hr /></div>
+                </div>
+            <?php } ?>
+            <div class="cultureEventContainer">
+                <div class="cultureTripContent">
+                    <div class="cultureTripDescription"><?= $item->tripDescription ?></div>
+                </div>
+            </div>
+        <?php $first = false; } ?>
+    </div>
 
 <?php $this->endblock(); ?>

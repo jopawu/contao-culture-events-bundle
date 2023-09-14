@@ -44,6 +44,8 @@ $GLOBALS['TL_LANG']['tl_culture_events']['title'] = ["Title", "The events title.
 $GLOBALS['TL_LANG']['tl_culture_events']['subtitle'] = ["Subtitle", "An optional subtitle for the event."];
 $GLOBALS['TL_LANG']['tl_culture_events']['description'] = ["Description", "The events description."];
 $GLOBALS['TL_LANG']['tl_culture_events']['summary'] = ["Summary", "A short summary for the description of the event."];
+$GLOBALS['TL_LANG']['tl_culture_events']['isCultureTrip'] = ["Culture Event Trip", "This culture event is organized as a journey."];
+$GLOBALS['TL_LANG']['tl_culture_events']['tripDescription'] = ["Presentation", "The description to be used for presented culture events."];
 $GLOBALS['TL_LANG']['tl_culture_events']['publishingDate'] = ["Publishing Date", "The date for publishing the event."];
 $GLOBALS['TL_LANG']['tl_culture_events']['archiveDate'] = ["Archive Date", "The date for archiving the event."];
 
@@ -52,4 +54,11 @@ $GLOBALS['TL_LANG']['tl_culture_events']['archiveDate'] = ["Archive Date", "The 
  */
 $GLOBALS['TL_LANG']['tl_culture_events']['singleDay'] = "Single Day";
 $GLOBALS['TL_LANG']['tl_culture_events']['multiDay'] = "Multiple Days";
+$GLOBALS['TL_LANG']['tl_culture_events']['singleTime'] = "Start Date and Time";
 $GLOBALS['TL_LANG']['tl_culture_events']['dateTimes'] = "Start/End Date and Time";
+
+/**
+ * Frontend Presentation
+ */
+$GLOBALS['TL_LANG']['tl_culture_events']['cultureEventsListingHeader'] = 'Events in %s %s';
+$GLOBALS['TL_LANG']['tl_culture_events']['cultureEventsStartEndSeparator'] = 'until';

@@ -10,9 +10,13 @@ use Contao\Date;
 use Contao\FrontendUser;
 use Contao\ModuleModel;
 use Contao\PageModel;
+use Contao\System;
 use Contao\Template;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Result;
+use Jopawu\ContaoCultureEventsBundle\Model\CultureEventsModel;
+use Jopawu\ContaoCultureEventsBundle\Parameter\YearMonthParameterString;
+use Jopawu\ContaoCultureEventsBundle\Translation\Translator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -63,45 +67,35 @@ class CultureEventsTripsController extends AbstractFrontendModuleController
 
     protected function getResponse(Template $template, ModuleModel $model, Request $request): Response
     {
-        $userFirstname = 'DUDE';
-        $user = $this->container->get('security.helper')->getUser();
+        return $this->buildEventListingResponse($template, $model, $request);
+    }
 
-        // Get the logged in frontend user... if there is one
-        if ($user instanceof FrontendUser) {
-            $userFirstname = $user->firstname;
+
+    /**
+     * @param Template $template
+     * @param ModuleModel $model
+     * @param Request $request
+     * @return Response
+     */
+    protected function buildEventListingResponse(Template $template, ModuleModel $model, Request $request): Response
+    {
+        /* @var Translator $translator */
+        $translator = System::getContainer()->get('translator');
+
+        /* @var Translator $translator */
+        $mylng = Translator::getInstance();
+
+        $template->listingTitle = $this->getPageModel()->title;
+
+        $events = CultureEventsModel::findPublishedTrips();
+        $items = [];
+
+        foreach ($events as $event)
+        {
+            $items[] = $event;
         }
 
-        /** @var Session $session */
-        $session = $request->getSession();
-        $bag = $session->getBag('contao_frontend');
-        $bag->set('foo', 'bar');
-
-        /** @var Date $dateAdapter */
-        $dateAdapter = $this->container->get('contao.framework')->getAdapter(Date::class);
-
-        $intWeekday = $dateAdapter->parse('w');
-        $translator = $this->container->get('translator');
-        $strWeekday = $translator->trans('DAYS.'.$intWeekday, [], 'contao_default');
-
-        $arrGuests = [];
-
-        // Get the database connection
-        $db = $this->container->get('database_connection');
-
-        /** @var Result $stmt */
-        $stmt = $db->executeQuery('SELECT * FROM tl_member WHERE gender = ? ORDER BY lastname', ['female']);
-
-        while (false !== ($row = $stmt->fetchAssociative())) {
-            $arrGuests[] = $row['firstname'];
-        }
-
-        $template->helloArchive = 'blubb (!)';
-
-        $template->helloText = '';
-
-        if (!empty($arrGuests)) {
-            $template->helloText = 'Our guests today are: '.implode(', ', $arrGuests);
-        }
+        $template->listingItems = $items;
 
         return $template->getResponse();
     }
