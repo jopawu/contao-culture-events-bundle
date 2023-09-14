@@ -18,24 +18,18 @@ use Contao\CoreBundle\Controller\FrontendModule\AbstractFrontendModuleController
 use Contao\CoreBundle\DependencyInjection\Attribute\AsFrontendModule;
 use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\CoreBundle\Routing\ScopeMatcher;
-use Contao\Date;
-use Contao\FrontendUser;
 use Contao\ModuleModel;
 use Contao\PageModel;
-use Contao\System;
 use Contao\Template;
 use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\Result;
 use Jopawu\ContaoCultureEventsBundle\Model\CultureEventsModel;
-use Jopawu\ContaoCultureEventsBundle\Parameter\YearMonthParameterString;
 use Jopawu\ContaoCultureEventsBundle\Translation\Translator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[AsFrontendModule(category: 'culture_events_module', template: 'mod_culture_events_archive')]
+// #[AsFrontendModule(category: 'culture_events_module', template: 'mod_culture_events_archive')]
 class CultureEventsArchiveController extends AbstractFrontendModuleController
 {
     public const TYPE = 'culture_events_archive';

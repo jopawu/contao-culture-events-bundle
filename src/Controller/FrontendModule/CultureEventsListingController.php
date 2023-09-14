@@ -20,7 +20,6 @@ use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\CoreBundle\Routing\ScopeMatcher;
 use Contao\Date;
 use Contao\FrontendUser;
-use Contao\Model\Collection;
 use Contao\ModuleModel;
 use Contao\PageModel;
 use Contao\System;
@@ -37,7 +36,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[AsFrontendModule(category: 'culture_events_module', template: 'mod_culture_events_listing')]
+// #[AsFrontendModule(category: 'culture_events_module', template: 'mod_culture_events_listing')]
 class CultureEventsListingController extends AbstractFrontendModuleController
 {
     public const TYPE = 'culture_events_listing';
