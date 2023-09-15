@@ -10,19 +10,7 @@
  * @link https://github.com/jopawu/contao-culture-events-bundle
  */
 
-use Jopawu\ContaoCultureEventsBundle\Controller\FrontendModule\CultureEventsListingController;
-use Jopawu\ContaoCultureEventsBundle\Controller\FrontendModule\CultureEventsTripsController;
-use Jopawu\ContaoCultureEventsBundle\Controller\FrontendModule\CultureEventsArchiveController;
 use Jopawu\ContaoCultureEventsBundle\Model\CultureEventsModel;
-
-/**
- * Frontend modules
- */
-$GLOBALS['FE_MOD']['culture_events_module'] = [
-    CultureEventsListingController::TYPE => CultureEventsListingController::class,
-    CultureEventsTripsController::TYPE => CultureEventsTripsController::class,
-    CultureEventsArchiveController::TYPE => CultureEventsArchiveController::class
-];
 
 /**
  * Backend modules

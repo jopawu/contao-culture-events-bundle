@@ -19,7 +19,7 @@ use Symfony\Component\Security\Core\Security;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 
-//#[AsFrontendModule(category: 'culture_events_module', template: 'mod_culture_events_trips')]
+#[AsFrontendModule(category: 'culture_events_module', template: 'mod_culture_events_trips')]
 class CultureEventsTripsController extends AbstractFrontendModuleController
 {
     public const TYPE = 'culture_events_trips';

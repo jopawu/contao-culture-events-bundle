@@ -29,7 +29,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-// #[AsFrontendModule(category: 'culture_events_module', template: 'mod_culture_events_archive')]
+#[AsFrontendModule(category: 'culture_events_module', template: 'mod_culture_events_archive')]
 class CultureEventsArchiveController extends AbstractFrontendModuleController
 {
     public const TYPE = 'culture_events_archive';
