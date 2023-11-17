@@ -62,6 +62,19 @@ class CultureEventsTripsController extends AbstractFrontendModuleController
 
     protected function getResponse(Template $template, ModuleModel $model, Request $request): Response
     {
+        $events = CultureEventsModel::findPublishedTrips();
+
+        if( !count($events) )
+        {
+            /* @var Translator $translator */
+            $mylng = Translator::getInstance();
+
+            $template->listingTitle = $this->getPageModel()->title;
+            $template->listingNoItems = $mylng->get('cultureEventsTripsNotItemsContent');
+
+            return $template->getResponse();
+        }
+
         return $this->buildEventListingResponse($template, $model, $request);
     }
 
@@ -80,9 +93,6 @@ class CultureEventsTripsController extends AbstractFrontendModuleController
         /* @var Translator $translator */
         $mylng = Translator::getInstance();
 
-        $template->listingTitle = $this->getPageModel()->title;
-
-        $events = CultureEventsModel::findPublishedTrips();
         $items = [];
 
         foreach ($events as $event)

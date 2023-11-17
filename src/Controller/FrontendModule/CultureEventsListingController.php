@@ -106,6 +106,17 @@ class CultureEventsListingController extends AbstractFrontendModuleController
      */
     protected function getResponse(Template $template, ModuleModel $model, Request $request): Response
     {
+        if($this->monthParameter === null)
+        {
+            /* @var Translator $translator */
+            $mylng = Translator::getInstance();
+
+            $template->listingTitle = $this->getPageModel()->title;
+            $template->listingNotItems = $mylng->get('cultureEventsListingNotItemsContent');
+
+            return $template->getResponse();
+        }
+
         return $this->buildEventListingResponse($template, $model, $request);
     }
 
@@ -123,11 +134,12 @@ class CultureEventsListingController extends AbstractFrontendModuleController
         /* @var Translator $translator */
         $mylng = Translator::getInstance();
 
-        [$year, $month] = YearMonthParameterString::split($this->monthParameter);
+        [$year, $month] = YearMonthParameterString::split();
+
         $titleMonth = $translator->trans('MONTHS.'.(int)($month-1), [], 'contao_default');
         $template->listingTitle = $mylng->get('cultureEventsListingHeader', [$titleMonth, $year]);
 
-        $events = CultureEventsModel::findYearMonthPublished((int)$year, (int)$month);
+        $events = CultureEventsModel::findYearMonthPublished($year, $month);
         $items = [];
 
         foreach($events as $event)

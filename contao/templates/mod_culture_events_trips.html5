@@ -3,7 +3,14 @@
 <?php $this->block('content'); ?>
 
     <!-- <h2><?= $this->listingTitle ?></h2> -->
+    <h2><?= $this->listingTitle ?></h2>
+
     <div class="cultureEventsTripsContainer">
+        <?php if( $this->listingNoItems ) { ?>
+            <div class="cultureTripContentNoItems">
+                <?= $this->listingNoItems ?>
+            </div>
+        <?php } ?>
         <?php $first = true; foreach($this->listingItems as $item) { ?>
             <?php if(!$first) { ?>
                 <div class="cultureEventContainer">

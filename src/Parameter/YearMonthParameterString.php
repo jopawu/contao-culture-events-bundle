@@ -6,9 +6,9 @@ class YearMonthParameterString
 {
     /**
      * @param string $yearMonth
-     * @return array
+     * @return array|null
      */
-    public static function split(string $yearMonth): array
+    public static function split(string $yearMonth): ?array
     {
         return explode('-', $yearMonth);
     }

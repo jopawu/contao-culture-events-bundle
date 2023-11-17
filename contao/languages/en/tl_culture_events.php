@@ -61,4 +61,7 @@ $GLOBALS['TL_LANG']['tl_culture_events']['dateTimes'] = "Start/End Date and Time
  * Frontend Presentation
  */
 $GLOBALS['TL_LANG']['tl_culture_events']['cultureEventsListingHeader'] = 'Events in %s %s';
+$GLOBALS['TL_LANG']['tl_culture_events']['cultureEventsListingNotItemsContent'] = 'There are no published events available at the moment.';
+$GLOBALS['TL_LANG']['tl_culture_events']['cultureEventsArchiveNotItemsContent'] = 'There are no archived events available at the moment.';
+$GLOBALS['TL_LANG']['tl_culture_events']['cultureEventsTripsNotItemsContent'] = 'There are no published culture event trips available at the moment.';
 $GLOBALS['TL_LANG']['tl_culture_events']['cultureEventsStartEndSeparator'] = 'until';

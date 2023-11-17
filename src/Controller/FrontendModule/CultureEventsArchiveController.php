@@ -95,8 +95,14 @@ class CultureEventsArchiveController extends AbstractFrontendModuleController
         $template->archiveTitle = $this->getPageModel()->title;
 
         $events = CultureEventsModel::findArchived();
-        $years = [];
 
+        if( $events === null )
+        {
+            $template->archiveNoItems = $mylng->get('cultureEventsArchiveNotItemsContent');
+            return $template->getResponse();
+        }
+
+        $years = [];
 
         foreach($events as $event)
         {

@@ -4,6 +4,10 @@
 
     <h2><?= $this->listingTitle ?></h2>
     <div class="cultureEventsListingContainer">
+        <?php if($this->listingNotItems) { ?>
+            <div class="cultureEventsContainerNoItems">
+                <?= $this->listingNotItems ?>
+        <?php } ?>
         <?php $first = true; foreach($this->listingItems as $item) { ?>
             <?php if(!$first) { ?>
                 <div class="cultureEventContainer">

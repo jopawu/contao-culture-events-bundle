@@ -4,6 +4,11 @@
 
     <h2><?= $this->archiveTitle ?></h2>
     <div class="cultureEventsArchiveContainer">
+    <?php if( $this->archiveNoItems ) { ?>
+        <div class="cultureArchiveContentNoItems">
+            <?= $this->archiveNoItems ?>
+        </div>
+    <?php } ?>
         <?php $first = true; foreach($this->archiveItems as $year => $items) { ?>
             <?php if(!$first) { ?>
                 <div class="cultureArchiveContainer">

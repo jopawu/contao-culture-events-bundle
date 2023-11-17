@@ -19,9 +19,9 @@ class YearMonthParameterDetermination
 
     /**
      * @param array $availableYearMonths
-     * @return string
+     * @return string|null
      */
-    public function getFallback(array $availableYearMonths): string
+    public function getFallback(array $availableYearMonths): ?string
     {
         foreach($availableYearMonths as $yearMonth)
         {
@@ -63,9 +63,9 @@ class YearMonthParameterDetermination
 
     /**
      * @param array $publishingMonths
-     * @return string
+     * @return string|null
      */
-    public static function getParameter(array $publishingMonths) : string
+    public static function getParameter(array $publishingMonths) : ?string
     {
         if( isset($_GET['month']) && self::isYearMonthParameter($_GET['month']))
         {
