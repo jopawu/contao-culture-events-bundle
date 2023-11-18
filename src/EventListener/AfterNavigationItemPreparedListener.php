@@ -68,16 +68,16 @@ class AfterNavigationItemPreparedListener
             return $navigationItem;
         }
 
+        if( !count($this->publishingMonths) )
+        {
+            return $navigationItem;
+        }
+
         $navigationItem['isActive'] = false;
 
         $navigationItem['class'] = str_replace(
             'active', '', $navigationItem['class']
         );
-
-        if( !count($this->publishingMonths) )
-        {
-            return $navigationItem;
-        }
 
         return $this->addFilteringSubnavigation($tpl, $navigationItem);
     }
