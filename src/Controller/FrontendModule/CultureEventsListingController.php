@@ -134,7 +134,7 @@ class CultureEventsListingController extends AbstractFrontendModuleController
         /* @var Translator $translator */
         $mylng = Translator::getInstance();
 
-        [$year, $month] = YearMonthParameterString::split();
+        [$year, $month] = YearMonthParameterString::split($this->monthParameter);
 
         $titleMonth = $translator->trans('MONTHS.'.(int)($month-1), [], 'contao_default');
         $template->listingTitle = $mylng->get('cultureEventsListingHeader', [$titleMonth, $year]);

@@ -10,6 +10,13 @@ class YearMonthParameterString
      */
     public static function split(string $yearMonth): ?array
     {
-        return explode('-', $yearMonth);
+        $yearMonthArray = explode('-', $yearMonth);
+
+        foreach($yearMonthArray as $key => $val)
+        {
+            $yearMonthArray[$key] = (int)$val;
+        }
+
+        return $yearMonthArray;
     }
 }
