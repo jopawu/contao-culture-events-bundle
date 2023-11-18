@@ -75,7 +75,7 @@ class CultureEventsTripsController extends AbstractFrontendModuleController
             return $template->getResponse();
         }
 
-        return $this->buildEventListingResponse($template, $model, $request);
+        return $this->buildEventListingResponse($template, $model, $request, $events);
     }
 
 
@@ -85,7 +85,7 @@ class CultureEventsTripsController extends AbstractFrontendModuleController
      * @param Request $request
      * @return Response
      */
-    protected function buildEventListingResponse(Template $template, ModuleModel $model, Request $request): Response
+    protected function buildEventListingResponse(Template $template, ModuleModel $model, Request $request, array $events): Response
     {
         /* @var Translator $translator */
         $translator = System::getContainer()->get('translator');
@@ -101,7 +101,7 @@ class CultureEventsTripsController extends AbstractFrontendModuleController
         }
 
         $template->listingItems = $items;
-
+        
         return $template->getResponse();
     }
 }
