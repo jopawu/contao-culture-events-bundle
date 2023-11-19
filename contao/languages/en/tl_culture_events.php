@@ -48,6 +48,7 @@ $GLOBALS['TL_LANG']['tl_culture_events']['isCultureTrip'] = ["Culture Event Trip
 $GLOBALS['TL_LANG']['tl_culture_events']['tripDescription'] = ["Presentation", "The description to be used for presented culture events."];
 $GLOBALS['TL_LANG']['tl_culture_events']['publishingDate'] = ["Publishing Date", "The date for publishing the event."];
 $GLOBALS['TL_LANG']['tl_culture_events']['archiveDate'] = ["Archive Date", "The date for archiving the event."];
+$GLOBALS['TL_LANG']['tl_culture_events']['eventYear'] = ["Year", "The year of the event."];
 
 /**
  * References

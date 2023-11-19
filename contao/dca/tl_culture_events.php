@@ -254,6 +254,16 @@ $GLOBALS['TL_DCA']['tl_culture_events']['fields'] = [
             'tl_class' => 'w50'
         ]
 
+    ],
+
+    'eventYear' => [
+
+        'sql'       => "int(10) unsigned NULL",
+        'search'    => true,
+        'filter'    => true,
+        'sorting'   => true,
+        'flag'      => DataContainer::SORT_DESC
+
     ]
 
 ];
@@ -283,13 +293,13 @@ $GLOBALS['TL_DCA']['tl_culture_events']['subpalettes'] = [
 $GLOBALS['TL_DCA']['tl_culture_events']['list'] = [
     'sorting'           => [
         'mode'        => DataContainer::MODE_SORTABLE,
-        'fields'      => ['startDate'],
+        'fields'      => ['eventYear'],
         'flag'        => DataContainer::SORT_DAY_DESC,
         'panelLayout' => 'filter;sort,search,limit'
     ],
     'label'             => [
-        'fields' => ['title'],
-        'format' => '%s',
+        'fields' => ['startDate', 'title', 'subtitle'],
+        'format' => '%s: %s - %s',
     ],
     'global_operations' => [
         'all' => [
