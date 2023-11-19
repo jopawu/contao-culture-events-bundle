@@ -293,13 +293,13 @@ $GLOBALS['TL_DCA']['tl_culture_events']['subpalettes'] = [
 $GLOBALS['TL_DCA']['tl_culture_events']['list'] = [
     'sorting'           => [
         'mode'        => DataContainer::MODE_SORTABLE,
-        'fields'      => ['eventYear'],
+        'fields'      => ['startDate'],
         'flag'        => DataContainer::SORT_DAY_DESC,
         'panelLayout' => 'filter;sort,search,limit'
     ],
     'label'             => [
         'fields' => ['startDate', 'title', 'subtitle'],
-        'format' => '%s: %s - %s',
+        'format' => '%s &nbsp;|&nbsp; %s &nbsp;|&nbsp; %s',
     ],
     'global_operations' => [
         'all' => [
